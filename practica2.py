@@ -38,9 +38,14 @@ def mostrarEscena():
 		glOrtho(-4,4,-4,4,-4,4)
 	#Proyeccion Prespectiva
 	if(proyeccion==2):
-		gluPerspective(120, 6/4, 0.001, 2.5)
-		
+		gluPerspective(120, 6/4, 10, 2)
+	if(proyeccion==3):
+		gluPerspective(-120, 6/4, 5, 2)
+	if(proyeccion==4):
+		gluPerspective(120, 0.5, 10, 2)
+	
 	# Arriba
+	
 	glBegin(GL_QUADS)
 	glColor3f(1,0,0) # Rojo
 	glVertex3f(0.5, 1.5,  0.5)
@@ -96,7 +101,7 @@ def mostrarEscena():
     
     # ---------------Piramide
 	
-	
+	#glLoadIdentity()
 	# Base
 	glBegin(GL_QUADS)
 	
@@ -152,10 +157,10 @@ def keyPressed(key,x,y):
 		proyeccion = 2
 	# Camara Inicial
 	if(key[0]=="0"):
-		visualizacion = 3
+		proyeccion = 3
 	# Camara 1
 	if(key[0]=="1"):
-		visualizacion = 3
+		proyeccion = 4
 	# Camara 2
 	if(key[0]=="2"):
 		visualizacion = 3
