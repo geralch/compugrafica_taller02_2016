@@ -1,4 +1,4 @@
-# Geraldine Caicedo Hidalgo - 1527691
+## Geraldine Caicedo Hidalgo - 1527691
 # Sebastian Salazar - 0938596
 # Computacion Grafica
 # Practica 02 - Junio 2016
@@ -13,7 +13,7 @@ import threading
 import random
 
 window = 0
-
+proyeccion = 0
 DIRECTION = 1
 
 
@@ -23,18 +23,23 @@ def InitGL(Width, Height):
     glEnable(GL_DEPTH_TEST)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    #glOrtho(-4,4,-4,4,-4,4)
-    gluPerspective(45.0, float(Width)/float(Height), 0.1, 100.0)
     glMatrixMode(GL_MODELVIEW)
 
 
 def mostrarEscena():
 	global DIRECTION
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-		
+	
 	# ----------------Cubo
 	glLoadIdentity()
-	glTranslatef(0,0,-6)
+	
+	# Proyeccion Paralela
+	if(proyeccion==1):
+		glOrtho(-4,4,-4,4,-4,4)
+	#Proyeccion Prespectiva
+	if(proyeccion==2):
+		gluPerspective(120, 6/4, 0.001, 2.5)
+		
 	# Arriba
 	glBegin(GL_QUADS)
 	glColor3f(1,0,0) # Rojo
@@ -90,9 +95,11 @@ def mostrarEscena():
 	glEnd()
     
     # ---------------Piramide
-	glLoadIdentity()
+	
+	
 	# Base
 	glBegin(GL_QUADS)
+	
 	glColor3f(1,0,0) # Rojo
 	glVertex3f(-1.5, -3, -1.5)
 	glVertex3f(-1.5, -3, -2.5)
@@ -135,17 +142,14 @@ def mostrarEscena():
 	glutSwapBuffers()
 
 def keyPressed(key,x,y):
-	global colorR
-	global colorG 
-	global colorB
-	global visualizacion
+
+	global proyeccion
 	# Proyeccion Paralela 
 	if(key[0]=="r"):
-		
-		print("r")
+		proyeccion=1
 	# Proyeccion Prespectiva
 	if(key[0]=="f"):
-		visualizacion = 2
+		proyeccion = 2
 	# Camara Inicial
 	if(key[0]=="0"):
 		visualizacion = 3
@@ -168,6 +172,7 @@ def keyPressed(key,x,y):
 def main():
 
 		global window
+		global proyeccion
 
 		glutInit(sys.argv)
 		glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
