@@ -15,6 +15,7 @@ import random
 window = 0
 proyeccion = 0
 vista = 0
+visualizacion = 0
 DIRECTION = 1
 
 
@@ -26,33 +27,45 @@ def InitGL(Width, Height):
     glLoadIdentity()
     glMatrixMode(GL_MODELVIEW)
 
-
-def mostrarEscena():
-	global DIRECTION, proyeccion, vista
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-	
-	# ----------------Cubo
-	glLoadIdentity()
-	
+def elegirProyeccion(proyeccion):
 	# Proyeccion Paralela
 	if(proyeccion==1):
 		glOrtho(-4,4,-4,4,-4,4)
+		
 	#Proyeccion Prespectiva
 	if(proyeccion==2):
 		gluPerspective(120, 6/4, 10, 2)
 		
-	# Vista Principal
-	if(vista==4):
-		gluLookAt(0,0,0,1,1,1,0,0,0)
+def elegirVista(vista):
 	# Vista 1
 	if(vista==1):
 		gluLookAt(0,0,0,1,1,1,0,0,0)
+		
 	# Vista 2
 	if(vista==2):
 		gluLookAt(0,0,0,1,1,1,0,0,0)
+		
 	# Vista 3
 	if(vista==3):
 		gluLookAt(0,0,0,1,1,1,0,0,0)
+		
+def accionesMarquesina(visualizacion):
+	# Marquesina
+	if (visualizacion==1):
+		gluLookAt(0,0,0,1,1,1,0,0,0)
+
+def mostrarEscena():
+	global DIRECTION, proyeccion, vista, visualizacion
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+	
+	# ----------------Cubo
+	glLoadIdentity()
+	elegirProyeccion(proyeccion)
+	elegirVista(vista)
+	accionesMarquesina(visualizacion)
+	# Vista Principal
+	#if(vista==4):
+	#	gluLookAt(0,0,0,1,1,1,0,0,0)
 	
 	# Arriba
 	
@@ -111,7 +124,11 @@ def mostrarEscena():
     
     # ---------------Piramide
 	
-	#glLoadIdentity()
+	glLoadIdentity()
+	elegirProyeccion(proyeccion)
+	elegirVista(vista)
+	accionesMarquesina(visualizacion)
+	
 	# Base
 	glBegin(GL_QUADS)
 	
@@ -161,28 +178,45 @@ def keyPressed(key,x,y):
 	global proyeccion, vista
 	# Proyeccion Paralela 
 	if(key[0]=="r"):
+		vista = 0
+		visualizacion = 0
 		proyeccion=1
+		
 	# Proyeccion Prespectiva
 	if(key[0]=="f"):
+		vista = 0
+		visualizacion = 0
 		proyeccion = 2
 	# Camara Inicial
-	if(key[0]=="4"):
-		vista = 4
+	if(key[0]=="0"):
+		vista = 0
+		proyeccion = 0
+		visualizacion = 0
 	# Camara 1
 	if(key[0]=="1"):
+		vista = 0
+		proyeccion = 0
 		vista = 1
 	# Camara 2
 	if(key[0]=="2"):
+		vista = 0
+		proyeccion = 0
 		vista = 2
 	# Camara 3
 	if(key[0]=="3"):
+		vista = 0
+		proyeccion = 0
 		vista = 3
 	# Iniciar Marquesina
 	if(key[0]=="m"):
-		visualizacion = 3
+		vista = 0
+		proyeccion = 0
+		visualizacion = 1
 	# Detener Marquesina
 	if(key[0]=="n"):
-		visualizacion = 3
+		visualizacion = 0
+		vista = 0
+		proyeccion = 0
 
 def main():
 
