@@ -18,6 +18,17 @@ vista = 0
 visualizacion = 0
 DIRECTION = 1
 
+## Variables para ir acomodando el lookup
+varUPx = 0
+varUPy = 0
+varUPz = 0
+varEyex = 0
+varEyey = 0
+varEyez = 0
+varCentx = 0
+varCenty = 0
+varCentz = 0
+
 
 def InitGL(Width, Height):
 
@@ -176,6 +187,7 @@ def mostrarEscena():
 def keyPressed(key,x,y):
 
 	global proyeccion, vista
+	global varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz
 	# Proyeccion Paralela 
 	if(key[0]=="r"):
 		vista = 0
@@ -217,6 +229,18 @@ def keyPressed(key,x,y):
 		visualizacion = 0
 		vista = 0
 		proyeccion = 0
+	##Para intentar acomodar el lookup
+	if(key[0]=="p"):
+		varEyex += 1
+	#mover Eye x --
+	if(key[0]=="o"):
+		varEyex -= 1
+	#mover Eye y ++
+	if(key[0]=="l"):
+		varEyey += 1
+	#mover Eye y ++
+	if(key[0]=="k"):
+		varEyey -= 1
 
 def main():
 
