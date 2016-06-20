@@ -14,6 +14,7 @@ import random
 
 window = 0
 proyeccion = 0
+vista = 0
 DIRECTION = 1
 
 
@@ -27,7 +28,7 @@ def InitGL(Width, Height):
 
 
 def mostrarEscena():
-	global DIRECTION
+	global DIRECTION, proyeccion, vista
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	
 	# ----------------Cubo
@@ -39,10 +40,19 @@ def mostrarEscena():
 	#Proyeccion Prespectiva
 	if(proyeccion==2):
 		gluPerspective(120, 6/4, 10, 2)
-	if(proyeccion==3):
-		gluPerspective(-120, 6/4, 5, 2)
-	if(proyeccion==4):
-		gluPerspective(120, 0.5, 10, 2)
+		
+	# Vista Principal
+	if(vista==4):
+		gluLookAt(0,0,0,1,1,1,0,0,0)
+	# Vista 1
+	if(vista==1):
+		gluLookAt(0,0,0,1,1,1,0,0,0)
+	# Vista 2
+	if(vista==2):
+		gluLookAt(0,0,0,1,1,1,0,0,0)
+	# Vista 3
+	if(vista==3):
+		gluLookAt(0,0,0,1,1,1,0,0,0)
 	
 	# Arriba
 	
@@ -148,7 +158,7 @@ def mostrarEscena():
 
 def keyPressed(key,x,y):
 
-	global proyeccion
+	global proyeccion, vista
 	# Proyeccion Paralela 
 	if(key[0]=="r"):
 		proyeccion=1
@@ -156,17 +166,17 @@ def keyPressed(key,x,y):
 	if(key[0]=="f"):
 		proyeccion = 2
 	# Camara Inicial
-	if(key[0]=="0"):
-		proyeccion = 3
+	if(key[0]=="4"):
+		vista = 4
 	# Camara 1
 	if(key[0]=="1"):
-		proyeccion = 4
+		vista = 1
 	# Camara 2
 	if(key[0]=="2"):
-		visualizacion = 3
+		vista = 2
 	# Camara 3
 	if(key[0]=="3"):
-		visualizacion = 3
+		vista = 3
 	# Iniciar Marquesina
 	if(key[0]=="m"):
 		visualizacion = 3
