@@ -241,6 +241,9 @@ def keyPressed(key,x,y):
 	#mover Eye y ++
 	if(key[0]=="k"):
 		varEyey -= 1
+	#Imprimir la config
+	print "upx: %i upy:%i upz:%i eyex:%i eyey:%i eyez%i centx:%i centy:%i centz:%i" % 
+	(varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz)
 
 def main():
 
