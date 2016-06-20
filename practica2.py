@@ -241,10 +241,47 @@ def keyPressed(key,x,y):
 	if(key[0]=="u"):
 		varT = "up"
 	##cuando sea el ojo
-	if(key[0]=="i" && varT=="ojo"):
+	if(key[0]=="i" and varT=="ojo"):
 		varEyex += 1
-	if(key[0]=="j" && varT=="ojo"):
+	if(key[0]=="j" and varT=="ojo"):
 		varEyex -= 1
+	if(key[0]=="o" and varT=="ojo"):
+		varEyey += 1
+	if(key[0]=="k" and varT=="ojo"):
+		varEyey -= 1
+	if(key[0]=="p" && varT=="ojo"):
+		varEyez += 1
+	if(key[0]=="l" && varT=="ojo"):
+		varEyez -= 1
+
+	##para el centro
+	if(key[0]=="i" and varT=="centro"):
+		varCentx += 1
+	if(key[0]=="j" and varT=="centro"):
+		varCentx -= 1
+	if(key[0]=="o" and varT=="centro"):
+		varCenty += 1
+	if(key[0]=="k" and varT=="centro"):
+		varCenty -= 1
+	if(key[0]=="p" && varT=="centro"):
+		varCentz += 1
+	if(key[0]=="l" && varT=="centro"):
+		varCentz -= 1
+
+	##para el up
+	if(key[0]=="i" and varT=="up"):
+		varUPx += 1
+	if(key[0]=="j" and varT=="up"):
+		varUPx -= 1
+	if(key[0]=="o" and varT=="up"):
+		varUPy += 1
+	if(key[0]=="k" and varT=="up"):
+		varUPy -= 1
+	if(key[0]=="p" && varT=="up"):
+		varUPz += 1
+	if(key[0]=="l" && varT=="up"):
+		varUPz -= 1
+
 	"""
 	if(key[0]=="p"):
 		varEyex += 1
