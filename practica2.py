@@ -71,6 +71,7 @@ def accionesMarquesina(visualizacion):
 
 def mostrarEscena():
 	global DIRECTION, proyeccion, vista, visualizacion
+	global varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	
 	# ----------------Cubo
@@ -81,6 +82,7 @@ def mostrarEscena():
 	# Vista Principal
 	#if(vista==4):
 	#	gluLookAt(0,0,0,1,1,1,0,0,0)
+	gluLookAt(varEyex, varEyey, varEyez, varCentx, varCenty, varCentz, varUPx, varUPy, varUPz)
 	
 	# Arriba
 	
@@ -249,9 +251,9 @@ def keyPressed(key,x,y):
 		varEyey += 1
 	if(key[0]=="k" and varT=="ojo"):
 		varEyey -= 1
-	if(key[0]=="p" && varT=="ojo"):
+	if(key[0]=="p" and varT=="ojo"):
 		varEyez += 1
-	if(key[0]=="l" && varT=="ojo"):
+	if(key[0]=="l" and varT=="ojo"):
 		varEyez -= 1
 
 	##para el centro
@@ -263,9 +265,9 @@ def keyPressed(key,x,y):
 		varCenty += 1
 	if(key[0]=="k" and varT=="centro"):
 		varCenty -= 1
-	if(key[0]=="p" && varT=="centro"):
+	if(key[0]=="p" and varT=="centro"):
 		varCentz += 1
-	if(key[0]=="l" && varT=="centro"):
+	if(key[0]=="l" and varT=="centro"):
 		varCentz -= 1
 
 	##para el up
@@ -277,9 +279,9 @@ def keyPressed(key,x,y):
 		varUPy += 1
 	if(key[0]=="k" and varT=="up"):
 		varUPy -= 1
-	if(key[0]=="p" && varT=="up"):
+	if(key[0]=="p" and varT=="up"):
 		varUPz += 1
-	if(key[0]=="l" && varT=="up"):
+	if(key[0]=="l" and varT=="up"):
 		varUPz -= 1
 
 	"""
