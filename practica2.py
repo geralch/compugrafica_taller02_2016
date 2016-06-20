@@ -29,6 +29,10 @@ varCentx = 0
 varCenty = 0
 varCentz = 0
 
+varT = ""
+
+
+
 
 def InitGL(Width, Height):
 
@@ -187,7 +191,7 @@ def mostrarEscena():
 def keyPressed(key,x,y):
 
 	global proyeccion, vista
-	global varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz
+	global varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz, varT
 	# Proyeccion Paralela 
 	if(key[0]=="r"):
 		vista = 0
@@ -229,7 +233,19 @@ def keyPressed(key,x,y):
 		visualizacion = 0
 		vista = 0
 		proyeccion = 0
-	##Para intentar acomodar el lookup
+	##Para intentar acomodar el lookup t=ojo y=centro u=up
+	if(key[0]=="t"):
+		varT = "ojo"
+	if(key[0]=="y"):
+		varT = "centro"
+	if(key[0]=="u"):
+		varT = "up"
+	##cuando sea el ojo
+	if(key[0]=="i" && varT=="ojo"):
+		varEyex += 1
+	if(key[0]=="j" && varT=="ojo"):
+		varEyex -= 1
+	"""
 	if(key[0]=="p"):
 		varEyex += 1
 	#mover Eye x --
@@ -245,9 +261,10 @@ def keyPressed(key,x,y):
 	if(key[0]=="i"):
 		varEyez += 1
 	#mover Eye z --
-	if(key[0]=="o"):
+	if(key[0]=="u"):
 		varEyez -= 1
 	#Imprimir la config
+	"""
 	print "upx: %i upy:%i upz:%i eyex:%i eyey:%i eyez%i centx:%i centy:%i centz:%i" % (varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz)
 
 def main():
