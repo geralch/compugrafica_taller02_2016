@@ -248,8 +248,7 @@ def keyPressed(key,x,y):
 	if(key[0]=="o"):
 		varEyez -= 1
 	#Imprimir la config
-	print "upx: %i upy:%i upz:%i eyex:%i eyey:%i eyez%i centx:%i centy:%i centz:%i" % 
-	(varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz)
+	print "upx: %i upy:%i upz:%i eyex:%i eyey:%i eyez%i centx:%i centy:%i centz:%i" % (varUPx, varUPy, varUPz, varEyex, varEyey, varEyez, varCentx, varCenty, varCentz)
 
 def main():
 
